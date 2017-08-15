@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const settings = require("./settings.json");
-var prefix = "!";
+const embed = new Discord.RichEmbed();
+var prefix = "{";
 client.on('ready', () => {
   console.log(`I'm online!`);
   client.user.setGame("on that good discord server | discord.li/mrrobot");
@@ -37,6 +38,15 @@ client.on('message', msg => {
     member.ban(reason);
     msg.reply(`${msg.mentions.members.first()} has been banned!`);
     msg.reply(`Check the Audit Log for the reason!`);
+  }
+});
+
+client.on('message', msg => {
+  if(msg.content.startsWith(prefix + "help")) {
+    embed.setTitle("**__Robot-Moderation Help Menu__**")
+    .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason.")
+    .setThumbnail(msg.author.avatarURL)
+    msg.author.sendMessage({embed});
   }
 });
 
