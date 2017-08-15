@@ -22,7 +22,7 @@ client.on('message', msg => {
 })
 
 client.on('message', msg => {
-  if(msg.content.startsWith(prefix + "kick")) {
+  if (msg.content.startsWith(prefix + "kick")) {
     let member = msg.mentions.members.first();
     let reason = msg.content.split(/\s+/g).slice(2).join(" ");
     member.kick(reason);
@@ -32,7 +32,7 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  if(msg.content.startsWith(prefix + "ban")) {
+  if (msg.content.startsWith(prefix + "ban")) {
     let member = msg.mentions.members.first();
     let reason = msg.content.split(/\s+/g).slice(2).join(" ");
     member.ban(reason);
@@ -42,12 +42,26 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  if(msg.content.startsWith(prefix + "help")) {
+  if (msg.content.startsWith(prefix + "help")) {
     embed.setTitle("**__Robot-Moderation Help Menu__**")
-    .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason.")
-    .setThumbnail(msg.author.avatarURL)
-    msg.author.sendMessage({embed});
+      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason.")
+      .setThumbnail(msg.author.avatarURL)
+    msg.author.sendMessage({
+      embed
+    });
   }
 });
+
+client.on('message', msg => {
+  if (msg.content.startsWith(prefix + "setup")) {
+    var guild = msg.guild;
+    msg.reply('A Staff role has been created!');
+    guild.createRole({
+      name: 'Staff',
+      color: '#FF0000',
+      mentionable: true
+    }).catch(error => console.log(error));
+  }
+})
 
 client.login(settings.token);
