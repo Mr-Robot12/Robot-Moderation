@@ -44,7 +44,7 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content.startsWith(prefix + "help")) {
     embed.setTitle("**__Robot-Moderation Help Menu__**")
-      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason. \n setup: Sets up the server with the Staff role.")
+      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason.")
       .setThumbnail(msg.author.avatarURL)
     msg.author.sendMessage({
       embed
@@ -63,5 +63,16 @@ client.on('message', msg => {
     }).catch(error => console.log(error));
   }
 })
+
+client.on('message', msg => {
+  if (msg.content.startsWith(prefix + "about")) {
+    embed.setTitle("__About__")
+      .setDescription("**Robot Moderation to a bot coded by Dan#3769 and Mr Robot#8472, made for the Mr Robot Community Discord Server.**")
+      .setImage("https://cdn.discordapp.com/attachments/274843090076958721/346968526684422144/hypesquad-white.png")
+    msg.channel.sendMessage({
+      embed
+    });
+  }
+});
 
 client.login(settings.token);
