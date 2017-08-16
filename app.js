@@ -44,7 +44,7 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content.startsWith(prefix + "help")) {
     embed.setTitle("**__Robot-Moderation Help Menu__**")
-      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason.")
+      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason. \n setup: Sets up the server with the Staff role.")
       .setThumbnail(msg.author.avatarURL)
     msg.author.sendMessage({
       embed
