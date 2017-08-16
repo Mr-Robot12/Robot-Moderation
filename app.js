@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const settings = require("./settings.json");
 const embed = new Discord.RichEmbed();
-var prefix = "{";
+var prefix = "!";
 client.on('ready', () => {
   console.log(`I'm online!`);
   client.user.setGame("on that good discord server | discord.li/mrrobot");
@@ -74,5 +74,15 @@ client.on('message', msg => {
     });
   }
 });
+
+client.on('message', msg => {
+  if (msg.content.startsWith(prefix + "invite")) {
+    embed.setTitle("__To invite Robot Moderation to your server, use this link:__")
+    .setDescription("**https://bot.discord.io/robotmoderation**")
+    msg.channel.sendMessage({
+      embed
+    });
+  }
+})
 
 client.login(settings.token);
