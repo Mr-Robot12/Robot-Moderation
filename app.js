@@ -44,7 +44,7 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content.startsWith(prefix + "help")) {
     embed.setTitle("**__Robot-Moderation Help Menu__**")
-      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason. \n about: Information about Robot Moderation. \n invite: Shows the invite link for adding Robot Moderation to your server.")
+      .setDescription("help: Brings you to this menu. \n ping: Pings your connection. \n avatar: Gives you your Discord avatar link. \n kick: Kicks a user, with an optional reason. \n ban: Bans a user, with an optional reason. \n about: Information about Robot Moderation. \n invite: Shows the invite link for adding Robot Moderation to your server. \n announce: Posts a mini announcement in an embed with whatever text you want.")
       .setThumbnail(msg.author.avatarURL)
     msg.author.sendMessage({
       embed
@@ -82,6 +82,19 @@ client.on('message', msg => {
     msg.channel.sendMessage({
       embed
     });
+  }
+})
+
+client.on('message', msg => {
+  if (msg.content.startsWith(prefix + "announce")) {
+    let text = msg.content.split(/\s+/g).slice(1).join(" ");
+    console.log(text);
+    embed.setTitle("__Announcement__")
+      .setDescription("\n" + text)
+    msg.channel.send({
+      embed
+    });
+    msg.channel.sendMessage("**⚠️ This command is still in development!**");
   }
 })
 
