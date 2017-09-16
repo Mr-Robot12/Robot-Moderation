@@ -6,8 +6,5 @@ exports.run = function(client, message, args) {
   console.log(text);
   embed.setTitle("__Announcement__")
     .setDescription("\n" + text)
-  message.channel.send({
-    embed
-  });
-  message.channel.sendMessage("**⚠️ This command is still in development!**");
+  message.channel.send({embed});
 }
