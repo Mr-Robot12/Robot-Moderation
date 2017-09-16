@@ -1,3 +1,3 @@
 exports.run = function(client, message, args) {
-  message.reply(`**Pong!** Our ping connection is ${client.ping}ms!`);
+  message.channel.send(`${message.author} **Pong!** Our ping connection is ${Math.floor(client.ping)}ms!`);
 }
