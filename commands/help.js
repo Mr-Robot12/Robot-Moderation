@@ -3,6 +3,7 @@ const embed = new Discord.RichEmbed();
 
 exports.run = function(client,message, args) {
   embed.setTitle("__Robot Moderation Help__")
+  .setColor("#ffa500")
   .setDescription("**This is the help menu for Robot Moderation.**")
   .setThumbnail("http://mrrobotcommunity.tk/assets/avatar.jpg")
   .addField("about", "Posts an embed explaining some information about Robot Moderation. `!about`")
