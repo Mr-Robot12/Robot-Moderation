@@ -1,0 +1,21 @@
+const Discord = require('discord.js');
+
+exports.run = function(client, message, args) {
+	if(message.mentions.users.size == 0) {
+		message.channel.send(`**${message.author} You need to say someone to bang... unless you wanna bang yourself... :smirk:**`).catch(console.error);
+		return;
+	}
+	if(message.mentions.users.size > 1) {
+		message.channel.send(`**${message.author} You can't bang more than one person.. whatever floats your boat I guess... :neutral_face:**`).catch(console.error);
+		return;
+	}
+	const embed1 = new Discord.RichEmbed();
+	const embed2 = new Discord.RichEmbed();
+	embed1.setTitle("User Banged!")
+	.setDescription(`${message.mentions.members.first()} has been banged by ${message.author}! :boom:`)
+	message.channel.send({embed: embed1});
+
+	embed2.setTitle("You've been banged!")
+	.setDescription(`It looks like you've been banged by ${message.author} on ${message.guild.name}!`)
+	message.mentions.members.first().send({embed: embed2});
+}
